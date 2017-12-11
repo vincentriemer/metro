@@ -185,6 +185,8 @@ exports.runServer = async (options: RunServerOptions) => {
 
   serverApp.use(middleware);
 
+  options.projectRoots.forEach(root => serverApp.use(connect.static(root)));
+
   let httpServer;
 
   if (options.secure) {
